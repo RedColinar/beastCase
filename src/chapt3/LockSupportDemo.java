@@ -30,7 +30,4 @@ public class LockSupportDemo {
 		t1.interrupt();
 		LockSupport.unpark(t2);
 	}
-	
-	
-	
 }
