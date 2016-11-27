@@ -18,7 +18,6 @@ public class CountDownLatchDemo implements Runnable{
 		System.out.println("check complete");
 		end.countDown();
 	}
-	
 	public static void main(String[] args) throws InterruptedException {
 		//
 		ExecutorService exec = Executors.newFixedThreadPool(10);
