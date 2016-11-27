@@ -36,10 +36,10 @@ public class ReadWriteLockDemo {
 	public static void main(String[] args) {
 		ReadWriteLockDemo demo = new ReadWriteLockDemo();
 		for(int i=0;i<18;i++){
-			new  Thread(myUtil.Handle.uncheck(() ->  demo.handleRead(readLock))).start();
+			new  Thread(myUtil.MakeRunner.uncheck(() ->  demo.handleRead(readLock))).start();
 		}
 		for(int i=18;i<20;i++){
-			new  Thread(myUtil.Handle.uncheck(() -> demo.handleWrite(writeLock, new Random().nextInt()))).start();
+			new  Thread(myUtil.MakeRunner.uncheck(() -> demo.handleWrite(writeLock, new Random().nextInt()))).start();
 		}
 	}
 			

@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 public class ThreadPoolDemo {
 	public static void main(String[] args) {
-		Runnable r = myUtil.Handle.uncheck(() ->{
+		Runnable r = myUtil.MakeRunner.uncheck(() ->{
 			System.out.println(System.currentTimeMillis()+":Thread ID:"+ Thread.currentThread().getId());
 			//让每个线程执行一秒钟
 			Thread.sleep(1000);

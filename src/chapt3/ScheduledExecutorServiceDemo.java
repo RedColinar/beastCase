@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class ScheduledExecutorServiceDemo {
 	public static void main(String[] args) {
 		ScheduledExecutorService ses = Executors.newScheduledThreadPool(10);
-		ses.scheduleAtFixedRate(myUtil.Handle.uncheck(()->{
+		ses.scheduleAtFixedRate(myUtil.MakeRunner.uncheck(()->{
 			Thread.sleep(1000);
 			System.out.println(System.currentTimeMillis()/1000);
 		}), 0, 2, TimeUnit.SECONDS);

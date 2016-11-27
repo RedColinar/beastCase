@@ -1,6 +1,6 @@
 package myUtil;
 
-public class Handle {
+public class MakeRunner {
 	//一定要抛出异常，
 	//在接口中定义异常，就是告诉调用者，必须在运行方法后处理异常。如果不定义的话。所有的异常必须由接口的实现类 自己处理，这在很多时候并不合适。
 	@FunctionalInterface
