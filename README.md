@@ -1,2 +1,2 @@
 # beastCase
-I push some practice of the Thread in this repository : ) 
+I push some practice of the Thread into this repository : ) 
