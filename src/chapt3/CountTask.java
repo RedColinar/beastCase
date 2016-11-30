@@ -7,7 +7,7 @@ import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 
 @SuppressWarnings("serial")
-//递推任务：ForkJoinPoolDemo
+//递推任务：ForkJoinPoolDemo，分支合并框架
 public class CountTask extends RecursiveTask<Long>{
 	private static final int SIZE = 10000;
 	 private long start;
@@ -18,7 +18,7 @@ public class CountTask extends RecursiveTask<Long>{
 		this.start = start;
 		this.end = end;
 	}
-
+	//这个例子并不好。拆分子任务时，只有一次拆分，而且用的还是 int……，更好的办法是用递归拆分子任务，见ForkJoinSum()
 	@Override
 	protected Long compute() {
 		long sum = 0;
