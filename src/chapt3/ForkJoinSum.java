@@ -1,6 +1,9 @@
 package chapt3;
 
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
+import java.util.stream.LongStream;
 
 @SuppressWarnings("serial")
 public class ForkJoinSum extends RecursiveTask<Long>{
@@ -42,6 +45,13 @@ public class ForkJoinSum extends RecursiveTask<Long>{
 			sum+=numbers[i];
 		}
 		return sum;
+	}
+	//用并行编写前n个自然数求和
+	public static long forkJoinSumParam(long n){
+		//这里用eclipse的时候，LongStream加点没有出现rangeClosed(),看来eclipse对java8的支持不够好
+		long[] numbers = LongStream.rangeClosed(1, n).toArray();
+		ForkJoinTask<Long> task = new ForkJoinSum(numbers);
+		return new ForkJoinPool().invoke(task);
 	}
 
 }
