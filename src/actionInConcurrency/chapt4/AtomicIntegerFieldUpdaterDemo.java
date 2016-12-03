@@ -1,4 +1,4 @@
-package chapt4;
+package actionInConcurrency.chapt4;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;

@@ -1,4 +1,4 @@
-package chapt2;
+package actionInConcurrency.chapt2;
 
 import java.util.Vector;
 

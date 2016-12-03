@@ -1,4 +1,4 @@
-package chapt4;
+package actionInConcurrency.chapt4;
 
 import java.util.concurrent.atomic.AtomicIntegerArray;
 

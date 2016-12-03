@@ -1,4 +1,4 @@
-package chapt3;
+package actionInConcurrency.chapt3;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;

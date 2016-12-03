@@ -1,4 +1,4 @@
-package chapt2;
+package actionInConcurrency.chapt2;
 
 public class JoinMain {
 	public  volatile static int i=0;

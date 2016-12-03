@@ -1,4 +1,4 @@
-package chapt2;
+package actionInConcurrency.chapt2;
 
 public class DaemonDemo {
 	public static class DaemonT extends Thread{

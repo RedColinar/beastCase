@@ -1,4 +1,4 @@
-package chapt1;
+package actionInConcurrency.chapt1;
 
 public class MultiThreadLong {
 	public static long t=0;

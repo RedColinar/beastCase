@@ -1,4 +1,4 @@
-package chapt2;
+package actionInConcurrency.chapt2;
 
 public class AccountingSync implements Runnable{
 	static AccountingSync instant =new AccountingSync();

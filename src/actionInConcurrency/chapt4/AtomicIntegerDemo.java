@@ -1,4 +1,4 @@
-package chapt4;
+package actionInConcurrency.chapt4;
 
 import java.util.concurrent.atomic.AtomicInteger;
 //使用AtomicInteger比锁有更好的性能
