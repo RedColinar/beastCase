@@ -94,11 +94,21 @@ public class LinkedList<E> {
 	 * @throws Exception 
 	 * 
 	 */
+	@SuppressWarnings("unused")
 	public boolean delete(int index) throws Exception{
 		if(index<0 || index>=size){
 			throw new Exception() ;
 		}
-
+		if(index==0){
+			Node<E> t = head.nextNode;
+			head.nextNode = head.nextNode.nextNode;
+			t = null;
+		}else{
+			Node<E> pre = get(index-1);
+			Node<E> t = pre.nextNode;
+			pre.nextNode = pre.nextNode.nextNode;
+			t = null;		
+		}
 		return false;
 		
 	}
