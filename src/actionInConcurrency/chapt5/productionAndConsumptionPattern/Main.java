@@ -7,8 +7,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Main {
 	public static void main(String[] args) throws InterruptedException {
-		//建立缓冲区
+		//建立缓冲区,BlockingQueue中的offer()和take()使用锁和阻塞等待实现线程间的同步，性能并不优越，只是为了方便数据共享
 		BlockingQueue<Commodity> queue = new LinkedBlockingQueue<Commodity>(10);
+		
 		Producer producer1 = new Producer(queue);
 		Producer producer2 = new Producer(queue);
 		Producer producer3 = new Producer(queue);
