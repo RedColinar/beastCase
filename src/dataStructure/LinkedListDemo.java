@@ -5,7 +5,7 @@ package dataStructure;
  * @author 一方乌鸦
  * 
  */
-public class LinkedList<E> {
+public class LinkedListDemo<E> {
 	Node<E> head;
 	private int size;
 	
@@ -24,7 +24,7 @@ public class LinkedList<E> {
 		}
 	}
 	
-	public LinkedList() {
+	public LinkedListDemo() {
 		super();
 		this.head = new Node<>();
 	}
