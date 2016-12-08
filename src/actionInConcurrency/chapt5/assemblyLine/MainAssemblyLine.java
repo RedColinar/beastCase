@@ -12,7 +12,6 @@ public class MainAssemblyLine {
 		
 		int i = 1;
 		int j = 1;
-		long start = System.nanoTime();
 		for(i = 1;i<= 1000;i++){
 			for(j = 1;j<=1000;j++){
 				Msg msg = new Msg(i,j,
