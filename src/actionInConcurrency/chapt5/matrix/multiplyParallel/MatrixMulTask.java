@@ -7,12 +7,14 @@ import java.util.concurrent.RecursiveTask;
 
 import org.jmatrices.dbl.Matrix;
 import org.jmatrices.dbl.operator.MatrixOperator;
-
+//用ForkJoin框架进行递归任务
 @SuppressWarnings("serial")
 public class MatrixMulTask extends RecursiveTask<Matrix>{
-	Matrix m1;//需要计算的两个矩阵
+	//需要计算的两个矩阵
+	Matrix m1;
 	Matrix m2;
-	String pos;//计算结果位于父矩阵相乘结果的位置
+	//计算结果位于父矩阵相乘结果的位置
+	String pos;
 	//构造器
 	public MatrixMulTask(Matrix m1, Matrix m2, String pos) {
 		super();
@@ -31,7 +33,7 @@ public class MatrixMulTask extends RecursiveTask<Matrix>{
 			//继续分割矩阵
 			int rows;
 			rows = m1.rows();
-			//左乘的矩阵横向分割
+			//左乘的矩阵横向分割，先行数，再列数
 			Matrix m11 = m1.getSubMatrix(1, 1, rows/2,m1.cols());
 			Matrix m12 = m1.getSubMatrix(rows/2 + 1, 1, m1.rows(), m1.cols());
 			//右乘的矩阵纵向分割
@@ -40,15 +42,15 @@ public class MatrixMulTask extends RecursiveTask<Matrix>{
 			
 			ArrayList<MatrixMulTask> subTasks = new ArrayList<MatrixMulTask>();
 			MatrixMulTask tmp = null;
-			tmp = new MatrixMulTask(m11, m21, "m1");
+			tmp = new MatrixMulTask(m11, m21, "p1");
 			subTasks.add(tmp);
-			tmp = new MatrixMulTask(m11, m22, "m2");
+			tmp = new MatrixMulTask(m11, m22, "p2");
 			subTasks.add(tmp);
-			tmp = new MatrixMulTask(m12, m21, "m3");
+			tmp = new MatrixMulTask(m12, m21, "p3");
 			subTasks.add(tmp);
-			tmp = new MatrixMulTask(m12, m22, "m4");
+			tmp = new MatrixMulTask(m12, m22, "p4");
 			subTasks.add(tmp);
-			
+			//
 			for(MatrixMulTask t:subTasks){
 				t.fork();
 			}
@@ -56,9 +58,12 @@ public class MatrixMulTask extends RecursiveTask<Matrix>{
 			for(MatrixMulTask t :subTasks){
 				matrixMap.put(t.pos, t.join());
 			}
-			Matrix tmp1 = MatrixOperator.horizontalConcatenation(matrixMap.get("m1"),matrixMap.get("m2"));
-			Matrix tmp2 = MatrixOperator.horizontalConcatenation(matrixMap.get("m3"),matrixMap.get("m4"));
+			//水平矩阵拼接
+			Matrix tmp1 = MatrixOperator.horizontalConcatenation(matrixMap.get("p1"),matrixMap.get("p2"));
+			Matrix tmp2 = MatrixOperator.horizontalConcatenation(matrixMap.get("p3"),matrixMap.get("p4"));
+			//垂直矩阵拼接
 			Matrix m =  MatrixOperator.verticalConcatenation(tmp1, tmp2);
+			//返回完成计算的矩阵
 			return m;
 		}
 	}
