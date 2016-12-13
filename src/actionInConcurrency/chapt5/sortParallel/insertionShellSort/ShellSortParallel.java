@@ -44,6 +44,7 @@ public class ShellSortParallel {
 			//计算出下一个h值，缩小增量，直至增量为1
 			h = (h - 1)/3;
 			System.out.print(Arrays.toString(arr));
+			Arrays.stream(arr).forEach(System.out::println);
 		}
 	}
 	
@@ -106,6 +107,8 @@ public class ShellSortParallel {
 						array[j+h] = tmp;
 					}
 					System.out.println(Arrays.toString(array));
+					//更酷的写法
+					//Arrays.stream(arr).forEach(System.out::print);
 				}
 			}
 			latch.await();
