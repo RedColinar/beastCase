@@ -9,7 +9,7 @@ public class MeasureSpeed {
 			long start = System.nanoTime();
 			Object result = func.apply(param);
 			long duration = (System.nanoTime()-start)/1_000_000;
-			System.out.println("resulr="+result);
+			System.out.println("result="+result);
 			if(duration < fastest)  fastest = duration;
 		}
 		return  fastest;
